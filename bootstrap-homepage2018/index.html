@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Clemens Holzkorn's Personal Homepage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+
+	body {
+	    font-family: 'Century Gothic', 'Arial', sans-serif;
+	}
+	.navbar {
+		margin-bottom: 0;
+		border-radius: 0;
+		background-color: #23232b;
+		color: #FFF;
+		padding: 1% 0;
+		font-size: 1.2em;
+		border: 0;
+	}
+	
+	.navbar-brand {
+		float: left;
+		min-height: 55px;
+		padding: 0 15px 5px;
+	}
+	
+	.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus,
+	.navbar-inverse .navbar-nav .active a:hover {
+		color: #FFF;
+		background-color: #23232b;
+	}
+	
+	.navbar-inverse .navbar-nav li a {
+		color: #D5D5D5;
+	}
+	
+	.carousel-caption {
+		top: 50%;
+		transform: translateY(-50%);
+		text-transform: uppercase;
+	}
+	
+	.btn {
+		font-size: 18px;
+		color: #FFF;
+		padding: 12px 22px;
+		background-color: #23232b;
+		border: 2px solid #FFF;
+	}
+	
+	.container {
+		margin: 4% auto;	
+	}
+	
+	#icon {
+		max-width: 200px;
+		margin: 1% auto;
+	}
+	
+	footer {
+		width: 100%;
+		background-color: #23232b;
+		padding: 5%;
+		color: #FFF;
+	}
+	
+	.fa {
+		padding: 15px;
+		font-size: 25px;
+		color: #FFF;
+	}
+	
+	.fa:hover {
+		color: #D5D5D5;
+		text-decoration: none;
+	}
+
+	h4 {
+		font-weight: bold;
+	}
+
+	/* Hide text and buttons on images if width is too low */
+	@media (max-width: 900px){
+		.carousel-caption {
+			display: none;
+		}
+		
+		#icon {
+			max-width: 150px;
+		}
+		h2 {
+			font-size: 1.7em;
+		}
+	}
+	
+	/* Change size of footer icons */
+	@media  (max-width: 900px){
+		.fa {
+			font-size: 20px;
+			padding: 10px;
+		}
+	}
+  </style>
+</head>
+<body>
+	<!-- Navigation Bar -->
+	<nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<!-- List-Button that collapses the navbar -->
+				<button type="button" class="navbar-toggle"
+				data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#"><img src="img/logo_main.png"></a>
+				</div>
+				<!-- Navigation Bar items -->
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active"><a href="#">home</a></li>
+						<li><a href="#about">about</a></li>
+						<li><a href="#datasc">data science</a></li>
+						<li><a href="#economics">economics</a></li>
+						<li><a href="#media">media design</a></li>
+						<li><a href="#teaching">teaching</a></li>
+						<li><a href="#music">music</a></li>
+						<li><a href="#other">other activities</a></li>
+					</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<!-- Image Slider -->
+	<div id="myCarousel" class="carousel slide" data-ride="carousel">
+		<!-- Little dots for navigation -->
+		<ol class="carousel-indicators">
+			<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+			<li data-target="#myCarousel" data-slide-to="1"></li>
+			<li data-target="#myCarousel" data-slide-to="2"></li>
+		</ol>		
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+				<img src="img/statistics.jpg" width="100%">
+				<div class="carousel-caption">
+					<h1>data science</h1>
+					<br>
+					<button type="button" class="btn btn-default">show projects</button>
+				</div>
+				</div> <!-- End Active -->
+				<div class="item">
+					<img src="img/economics.jpg" width="100%">
+					<div class="carousel-caption">
+					<h1>economics</h1>
+					<br>
+					<button type="button" class="btn btn-default">show projects</button>
+				</div>
+				</div>
+				<div class="item">
+					<img src="img/live.jpg" width="100%">
+					<div class="carousel-caption">
+					<h1>music</h1>
+					<br>
+					<button type="button" class="btn btn-default">show projects</button>
+				</div>				
+			</div>
+			
+			<!-- Start Slider Controls -->
+			<!-- Left -->
+			<a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+				<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a>
+			
+			<!-- Right -->
+			<a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+				<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+			
+	</div> <!-- End Slider -->
+	
+
+	<!-- First container -->
+	<div class="container" id="about">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>about</h4>
+				<p>Hello! This homepage is a way of showcasing my interests and projects. Working hard for the things I care about and sharing some of this work with you is something I enjoy very much.</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- Second container -->
+	<div class="container" id="datasc">
+		<div class="row">
+			<div class="col-md-12">
+				<h4>data science</h4>
+				<p>I was almost done with my bachelor's degree in economics, when I took a course about statistical programming. This is when I fell in love with data science as a discipline. Extracting information and making predictions gives me the magnificent feeling of discovering something nobody has discovered before.</p>
+				
+				<p>Although I am open for using whatever gets the job done, the technologies below are the ones I am most familiar with.</p>
+
+				<p><b>My work in this field can be found in my <a href="#">data science github repository</a>.</b></p>
+			</div>
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<a href="https://www.mysql.com/" target="_blank">
+						<img src="img/icons/sql_square.jpg" class="img-responsive"
+						height="100px" width="100px"></a>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<a href="https://products.office.com/en/excel" target="_blank">
+						<img src="img/icons/excel.jpg" class="img-responsive"
+						height="100px" width="100px"></a>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<a href="https://www.rstudio.com/" target="_blank">			
+						<img src="img/icons/rstudio.png" class="img-responsive"
+						height="100px" width="100px"></a>
+					</div>
+
+					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+						<a href="https://www.python.org/" target="_blank">
+						<img src="img/icons/python.png" class="img-responsive"
+						height="100px" width="100px"></a>
+					</div>	
+		</div>
+	</div>
+
+
+	
+	<!-- 4-column section 1-->
+	<div class="container">
+		<!-- First row -->
+		<div class="row">
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12" id="economics">
+				<h4>economics</h4>
+				<p>Since I am deeply interested in economics, business and statistics, I started a bachelor's degree in economics at the University of Vienna, which I finished in 2016. As of right now, <b>I am writing a book for undergraduate students</b> about pluralist economics as my master's thesis. The economics and econometrics papers I have written <a href="#">can be found here</a>.</p>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<a href="https://econ.univie.ac.at/" target="_blank">
+				<img src="img/icons/uvie.png" class="img-responsive"></a>
+
+			</div>
+
+			</div>
+		
+		<!-- Third row -->		
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12" id="media">
+				<h4>media design</h4>
+				<p>In 2007 (when I was 14) I applied to business school, only because it offered a branch in Business Technologies. There I mostly learned the basics of software development and media design. I used these skills in our graduation projects as well, as in designing this homepage, which I built with the Bootstrap <b>HTML, CSS and JavaScript</b> library.</p>
+				<br>
+			<div class="col-md-2 col-sm-2 col-xs-4">
+				<a href="https://getbootstrap.com/" target="_blank">
+				<img src="img/icons/bootstrap.png" class="img-responsive"></a>
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-4">
+				<img src="img/icons/html5.png" class="img-responsive">
+			</div>
+			<div class="col-md-2 col-sm-2 col-xs-4">
+				<img src="img/icons/css3.png" class="img-responsive">		
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	<!-- 4-column section 2-->
+	<div class="container">
+		<!-- First row -->
+		<div class="row">
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12" id="teaching">
+				<h4>teaching</h4>
+				<p>In 2016 and 2017 I had the privilege of <b>teaching Microeconomics</b> to Business Technologies students at <b>TU Vienna</b> in the form of exercise classes. My tasks included giving instructions in class as well as correcting exams at the end of the semester. As of now, I am studying <a href="https://www.wu.ac.at/en/programs/masters-programs/business-education/overview/">Business Education at WU Vienna</a>.</p>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<a href="https://www.tuwien.ac.at/en/" target="_blank">
+				<img src="img/icons/tu.png" class="img-responsive" style="max-width: 150px"></a>
+			</div>
+			</div>
+	
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12" id="music">
+				<h4>music</h4>
+				<p>Music makes me happy. Since I’ve moved to Vienna I dove into the music scene, finding a place for sharing and learning performance arts. Getting involved with Edelbrand Records and playing at student parties gave me the opportunity to play many interesting concerts. As a main audio tool I use <a href="https://www.steinberg.net/en/products/cubase/start.html" target="_blank">Cubase</a>.</p>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<a href="https://www.youtube.com/watch?v=EzkLYBTXBPY" target="_blank">
+				<img src="img/gig.jpg" class="img-responsive" style="max-width: 150px"></a>
+			</div>					
+			</div>
+	
+		</div>
+	</div>
+
+
+	<!-- 4-column section 3-->
+	<div class="container" id="other">
+		<!-- First row -->
+		<div class="row">
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<h4>student's representative</h4>
+				<p>My interest for studying economics doesn’t stop when the lecture ends: in 2015, I was elected students representative for Economics at the University of Vienna. My tasks included listening to student's problems, giving them advice, talking to professors and being part of faculty committees.</p>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<a href="https://www.facebook.com/roter.borsenkrach/" target="_blank">
+				<img src="img/icons/oeh.jpg" class="img-responsive" style="max-width: 150px"></a>
+			</div>
+
+			</div>
+		
+		<!-- Third row -->		
+			<!-- A full page has width 12, so we are setting how much place
+			 this column will take up for large, medium, small and xs viewing -->
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<h4>events</h4>
+				<p>I love organizing events.</p>
+				<p><b>Team-building</b> and sports just fit together: for the past 2 years I have been the team captain of the Economists-Team. This includes organizing team trainings as well as participation in the Dragon Boat Students cup.</p><p>Together with a colleague from the Mathematics department, I also organized <b>large-scale student parties</b> at fluc and in the Unversity of Vienna Campus. This included communication, advertising, artist management, as well as performing myself and audio engineering on some occasions.</p>
+			<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+				<img src="img/dbc.jpg" class="img-responsive" style="max-width: 150px">
+			</div>					
+			</div>
+	
+		</div>
+	</div>
+
+
+
+	<!-- Second full container -->
+	<div class="container">
+		<div class="row">
+			<h4><a href="#hidden" data-toggle="collapse">What is Clemens up to now?</a></h4>
+			<div id="hidden" class="collapse">
+				<p>Currently, Clemens is writing his master's thesis about pluralist economics and taking courses in Business Software Engineering.</p>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- Footer container -->
+	<footer class="container-fluid text-center">
+		<div class="row">
+			
+			<!-- Column 1 -->
+			<div class="col-sm-4">
+				<h3>Contact Us</h3>
+				<br>
+				<h4>Our address and contact info </h4>
+			</div>
+			
+			<!-- Column 2 -->
+			<div class="col-sm-4">
+				<h3>Connect with us</h3>
+				<a href="#" class="fa fa-facebook"></a>
+				<a href="#" class="fa fa-twitter"></a>
+				<a href="#" class="fa fa-google"></a>
+				<a href="#" class="fa fa-linkedin"></a>
+				<a href="#" class="fa fa-youtube"></a>
+			</div>
+
+			<!-- Column 3 -->
+			<div class="col-sm-4">
+				<img src="img/bunny.png" class="icon">
+			</div>			
+			
+		</div>
+	</footer>
+	
+</body>
+</html>
