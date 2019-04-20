@@ -1,5 +1,3 @@
-<!-- URL https://github.com/nolimits4web/Swiper/blob/master/demos/090-vertical.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
   <!-- Link Swiper's CSS -->
-  <link rel="stylesheet" href="swiper-4.5.0/dist/css/swiper.min.css">
+  <link rel="stylesheet" href="../dist/css/swiper.min.css">
 
   <!-- Demo styles -->
   <style>
@@ -32,6 +30,7 @@
       text-align: center;
       font-size: 18px;
       background: #fff;
+
       /* Center slide text vertically */
       display: -webkit-box;
       display: -ms-flexbox;
@@ -46,33 +45,52 @@
       -webkit-align-items: center;
       align-items: center;
     }
+    .swiper-container-v {
+      background: #eee;
+    }
   </style>
 </head>
 <body>
   <!-- Swiper -->
-  <div class="swiper-container">
+  <div class="swiper-container swiper-container-h">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Clemens Holzkorn</div>
-      <div class="swiper-slide">Technology</div>
-      <div class="swiper-slide">Economics</div>
-      <div class="swiper-slide">Social</div>
+      <div class="swiper-slide">Horizontal Slide 1</div>
+      <div class="swiper-slide">
+        <div class="swiper-container swiper-container-v">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">Vertical Slide 1</div>
+            <div class="swiper-slide">Vertical Slide 2</div>
+            <div class="swiper-slide">Vertical Slide 3</div>
+            <div class="swiper-slide">Vertical Slide 4</div>
+            <div class="swiper-slide">Vertical Slide 5</div>
+          </div>
+          <div class="swiper-pagination swiper-pagination-v"></div>
+        </div>
+      </div>
+      <div class="swiper-slide">Horizontal Slide 3</div>
+      <div class="swiper-slide">Horizontal Slide 4</div>
     </div>
     <!-- Add Pagination -->
-    <div class="swiper-pagination"></div>
+    <div class="swiper-pagination swiper-pagination-h"></div>
   </div>
 
   <!-- Swiper JS -->
-  <script src="swiper-4.5.0/dist/js/swiper.min.js"></script>
+  <script src="../dist/js/swiper.min.js"></script>
 
   <!-- Initialize Swiper -->
   <script>
-    var swiper = new Swiper('.swiper-container', {
-      direction: 'vertical',
-      mousewheel: {
-        invert: false,
-      },
+    var swiperH = new Swiper('.swiper-container-h', {
+      spaceBetween: 50,
       pagination: {
-        el: '.swiper-pagination',
+        el: '.swiper-pagination-h',
+        clickable: true,
+      },
+    });
+    var swiperV = new Swiper('.swiper-container-v', {
+      direction: 'vertical',
+      spaceBetween: 50,
+      pagination: {
+        el: '.swiper-pagination-v',
         clickable: true,
       },
     });
