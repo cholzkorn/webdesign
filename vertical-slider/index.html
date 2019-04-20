@@ -4,22 +4,42 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Swiper demo</title>
+  <title>c_holzkorn</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="swiper-4.5.0/dist/css/swiper.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+
+  <meta http-equiv="Refresh" content="5; url=#start">
 
   <!-- Demo styles -->
+  <!-- Color scheme
+    grey: #404040
+    green: #49a078
+    blue: #64c7e9
+    red: #ed2865
+    gold: #ffcc05 -->
   <style>
     html, body {
       position: relative;
       height: 100%;
     }
+    p{
+      text-align: left !important;
+    }
+    a{
+      color: black;
+      text-decoration: none;
+    }
+    a:hover{
+      color: white;
+      text-decoration: none;
+    }
     body {
       background: #eee;
-      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
-      font-size: 14px;
+      font-family: Georgia, Helvetica, Arial, sans-serif;
+      font-size: medium;
       color:#000;
       margin: 0;
       padding: 0;
@@ -29,22 +49,98 @@
       height: 100%;
     }
     .swiper-slide {
-      text-align: center;
-      font-size: 18px;
+      text-align: left;
+      font-size: 24px;
       background: #fff;
       /* Center slide text vertically */
       display: -webkit-box;
       display: -ms-flexbox;
       display: -webkit-flex;
       display: flex;
-      -webkit-box-pack: center;
-      -ms-flex-pack: center;
-      -webkit-justify-content: center;
-      justify-content: center;
-      -webkit-box-align: center;
-      -ms-flex-align: center;
-      -webkit-align-items: center;
-      align-items: center;
+      -webkit-box-pack: left;
+      -ms-flex-pack: left;
+      -webkit-justify-content: left;
+      justify-content: left;
+      -webkit-box-align: left;
+      -ms-flex-align: left;
+      -webkit-align-items: left;
+      align-items: left;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: #49a078;
+    }
+
+    /* Start page */
+    #start{
+      background: linear-gradient(to top, #49a078 30%, white 30%);
+    }
+
+    #content-start{
+      margin-top: 2%;
+      margin-left: 2%;
+    }
+
+    #start-header{
+      font-size: 5em;
+    }
+
+    #start-contact{
+      margin-top: 102%;
+      font-size: 2em;
+      line-height: 100%
+      color: white;
+    }
+
+      /* Links */
+
+    #techlink, #econlink, #passionlink{
+        background-color: #404040;
+        color: white;
+        line-height: 150%;
+        font-size: 2.5em;
+      }
+
+    #techlink:hover{
+      background-color: #64c7e9;
+      color: white;
+      line-height: 150%;
+      font-size: 2.5em;
+      animation: shake 1s infinite;
+      animation-timing-function: linear;
+      transform: scale(1.5);
+      transition: all ease 500ms;
+    }
+
+    #econlink:hover{
+      background-color: #ffcc05;
+      color: white;
+      line-height: 150%;
+      font-size: 2.5em;
+      animation: shake 1s infinite;
+      animation-timing-function: linear;
+      transform: scale(1.5);
+      transition: all ease 500ms;
+    }
+
+    #passionlink:hover{
+      background-color: #ed2865;
+      color: white;
+      line-height: 150%;
+      font-size: 2.5em;
+      animation: shake 1s infinite;
+      animation-timing-function: linear;
+      transform: scale(1.5);
+      transition: all ease 500ms;
+    }
+
+
+
+    /* Other pages */
+
+    #grey, #tech, #econ, #passion{
+      background-color: #404040;
+      color: white;
     }
   </style>
 </head>
@@ -52,10 +148,33 @@
   <!-- Swiper -->
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">Clemens Holzkorn</div>
-      <div class="swiper-slide">Technology</div>
-      <div class="swiper-slide">Economics</div>
-      <div class="swiper-slide">Social</div>
+
+      <!-- (1) start slide -->
+      <div class="swiper-slide" id="start" data-hash="start">
+        <div id="content-start">
+          <div id="start-header">
+            c_holz
+          </div>
+          <div id="start-list">
+            <br>
+            <a href="#tech" id="techlink">technology.</a> <br>
+            <a href="#econ" id="econlink">economics.</a> <br>
+            <a href="#passion" id="passionlink">passion.</a> <br>
+          </div>
+          <div id="start-contact">
+            contact. <br>
+            &#128231; <a href="mailto:office@cholz.com">office@cholz.com</a>
+          </div>
+        </div>
+      </div>
+      <!-- (2) tech slide -->
+      <div class="swiper-slide" id="tech" data-hash="tech">technology.</div>
+
+      <!-- (3) economics slide -->
+      <div class="swiper-slide" id="econ" data-hash="econ">economics.</div>
+
+      <!-- (4) other slide -->
+      <div class="swiper-slide" id="passion" data-hash="passion">passion.</div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
@@ -71,11 +190,20 @@
       mousewheel: {
         invert: false,
       },
+      keyboard: {
+        enabled: true,
+      },
       pagination: {
         el: '.swiper-pagination',
         clickable: true,
+        hideOnClick: false,
       },
-    });
+      hashNavigation: {
+        watchState: true,
+        replaceState: false,
+      },
+    })
+    ;
   </script>
 </body>
 </html>
