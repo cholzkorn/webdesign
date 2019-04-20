@@ -10,6 +10,9 @@
   <!-- Link Swiper's CSS -->
   <link rel="stylesheet" href="swiper-4.5.0/dist/css/swiper.min.css">
   <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+  <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 
   <meta http-equiv="Refresh" content="5; url=#start">
 
@@ -21,6 +24,7 @@
     red: #ed2865
     gold: #ffcc05 -->
   <style>
+
     html, body {
       position: relative;
       height: 100%;
@@ -29,7 +33,7 @@
       text-align: left !important;
     }
     a{
-      color: black;
+      color: white;
       text-decoration: none;
     }
     a:hover{
@@ -44,6 +48,7 @@
       margin: 0;
       padding: 0;
     }
+
     .swiper-container {
       width: 100%;
       height: 100%;
@@ -86,15 +91,17 @@
     }
 
     #start-contact{
-      margin-top: 102%;
+      position: fixed;
+      top: 69%;
       font-size: 2em;
-      line-height: 100%
-      color: white;
+      line-height: 100%;
+      color: white !important;
+      background-color: #404040;
     }
 
       /* Links */
 
-    #techlink, #econlink, #passionlink{
+    #techlink, #econlink, #sociallink{
         background-color: #404040;
         color: white;
         line-height: 150%;
@@ -123,7 +130,7 @@
       transition: all ease 500ms;
     }
 
-    #passionlink:hover{
+    #sociallink:hover{
       background-color: #ed2865;
       color: white;
       line-height: 150%;
@@ -135,12 +142,64 @@
     }
 
 
+    /* Tech page */
+
+    .techhigh{
+      background-color: #64c7e9;
+      color: black;
+    }
+
+    #content-tech{
+      margin-top: 2%;
+      margin-left: 2%;
+    }
+
+    #tech{
+      background-color: #404040;
+      color: white;
+    }
+
+    #tech-header{
+      background-color: #64c7e9;
+      color: white;
+      font-size: 3.5em;
+    }
+
 
     /* Other pages */
 
-    #grey, #tech, #econ, #passion{
+    #grey, #econ, #social{
       background-color: #404040;
       color: white;
+    }
+
+
+    /* MEDIA QUERIES */
+
+    /* 1200px: small laptops */
+    @media (max-width: 1200px){
+      .swiper-slide {
+        font-size: 16px;
+      }
+    }
+
+    /* 700px: smartphones */
+    @media (max-width: 700px){
+      .swiper-slide {
+        font-size: 12px;
+      }
+      #tech-header{
+        background-color: #64c7e9;
+        color: white;
+        font-size: 2em;
+      }
+      #start-contact{
+        font-size: 1.5em;
+      }
+      img{
+        max-width: 300px;
+        left: -50%
+      }
     }
   </style>
 </head>
@@ -159,22 +218,52 @@
             <br>
             <a href="#tech" id="techlink">technology.</a> <br>
             <a href="#econ" id="econlink">economics.</a> <br>
-            <a href="#passion" id="passionlink">passion.</a> <br>
+            <a href="#social" id="sociallink">social.</a> <br>
           </div>
           <div id="start-contact">
-            contact. <br>
+            contact:
             &#128231; <a href="mailto:office@cholz.com">office@cholz.com</a>
           </div>
         </div>
       </div>
+
+
+
+
+
       <!-- (2) tech slide -->
-      <div class="swiper-slide" id="tech" data-hash="tech">technology.</div>
+      <div class="swiper-slide" id="tech" data-hash="tech">
+        <div id="content-tech">
+          <div id="tech-header" class="col-lg-12 col-md-12 col-s-12 col-xs-12">
+            c_holz: technology.
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-s-12 col-xs-12">
+              <br>
+              <h2>data science</h2><br>
+              My preferred data science tools are: <b class="techhigh">Python (pandas, scikit-learn, etc.), R and Excel / LibreOffice</b> – mostly because I like working with open-source languages and materials.
+              In October 2018, <b class="techhigh">I won a data science contest</b> held by pmOne Analytics at the University of Vienna. The goal was to predict visitor numbers of a theme park in Germany.
+              <br> <br>
+
+              <h2>webdesign</h2><br>
+              My preferred tools in Webdesign are: WordPress, mySQL and, of course, HTML, CSS and JavaScript.
+              As my master’s thesis I wrote a web-script on the topic of <b class="techhigh">pluralist economics</b>. You can visit the site <a href="https://www.plurale-pfade.eu"><b class="techhigh">HERE</b></a> (German only).
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-s-12 col-xs-12">
+              <br> <br> <br>
+              <img src="img/winner.jpg" alt="">
+            </div>
+          </div class="row">
+        </div>
+      </div>
 
       <!-- (3) economics slide -->
       <div class="swiper-slide" id="econ" data-hash="econ">economics.</div>
 
       <!-- (4) other slide -->
-      <div class="swiper-slide" id="passion" data-hash="passion">passion.</div>
+      <div class="swiper-slide" id="social" data-hash="social">passion.</div>
     </div>
     <!-- Add Pagination -->
     <div class="swiper-pagination"></div>
