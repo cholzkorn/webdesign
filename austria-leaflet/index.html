@@ -25,6 +25,15 @@
 		#map {
 			height: 100%
 		}
+
+		.info{
+		  padding: 6px 8px;
+		  font: 14px/16px Arial, Helvetica, sans-serif;
+		  background: white;
+		  background: rgba(255,255,255,0.8);
+		  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+		  border-radius: 5px;
+		}
 	</style>
 	<link rel="stylesheet" href="gh-pages.css" />
 </head>
@@ -55,7 +64,57 @@
 						}).addTo(map);
             // Add requested external GeoJSON to map
             var kyCounties = L.geoJSON(counties.responseJSON, {weight: 1}).addTo(map);
+
+						var popup = L.popup();
+
+						// Longitude & Latitude
+
+						function onMapClick(e) {
+						    popup
+						        .setLatLng(e.latlng)
+						        .setContent("You clicked the map at " + e.latlng.toString() +
+																" ")
+						        .openOn(map);
+						}
+						map.on('click', onMapClick);
+
+
+						// Hovering over Polygons
+
+						// importing info data
+
+						var ort = null;
+						$.ajax({
+						    'async': false,
+						    'global': false,
+						    'url': "verwaltungsgrenzen/gemeinden.json",
+						    'dataType': "json",
+						    'success': function (data) {
+						        ort = data;
+						    }
+						});
+
+						// control that shows state info on hover
+						var info = L.control();
+
+						info.onAdd = function (map) {
+						  this._div = L.DomUtil.create('div', 'info');
+						  this.update();
+						  return this._div;
+						};
+
+						info.update = function (props) {
+						  this._div.innerHTML = '<h4>Ortsname</h4>' +  (props.name ?
+						    '<b>' + props.name : 'Fahren Sie &uuml;ber eine Gemeinde');
+						};
+
+						info.addTo(map);
+
+
+
+
         });
+
     </script>
 
 </body>
