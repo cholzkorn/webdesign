@@ -36,7 +36,7 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script>
         var counties = $.ajax({
-            url: "verwaltungsgrenzen/gemeinden.json",
+            url: "verwaltungsgrenzen/gemeinden_simple.json",
             dataType: "json",
             success: console.log("County data successfully loaded."),
             error: function(xhr) {
@@ -54,7 +54,7 @@
 						  id: 'mapbox.light'
 						}).addTo(map);
             // Add requested external GeoJSON to map
-            var kyCounties = L.geoJSON(counties.responseJSON).addTo(map);
+            var kyCounties = L.geoJSON(counties.responseJSON, {weight: 1}).addTo(map);
         });
     </script>
 
