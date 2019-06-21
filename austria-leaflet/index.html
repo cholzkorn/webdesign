@@ -88,12 +88,66 @@
 				    }
 				});
 
+				// new einwohner property in ort
+				/*
+				for(i in ort.features){
+					ort.features[i].properties.einwohner = 0;
+				}*/
+
 				// Join population and geoJson
+				console.log("These are the whole objects:");
 				console.log(population);
 				console.log(ort);
 
-				// Join JSON objects
+				console.log("These are the specific requests:");
+				console.log(population.features[0].properties.iso);
+				console.log(ort.features[0].properties);
+				console.log([...Array(9999).keys()]);
 
+
+
+				// JOINING TWO FEATURE COLLECTIONS -------------------------------------
+
+				// URL: https://stackoverflow.com/questions/48562815/joining-two-feature-collections-by-id-in-earth-engine-javascript-api
+
+				// Create the primary collection.
+				var primaryFeatures = ee.FeatureCollection([
+				  ee.Feature(null, {foo: 0, ID: 'a'}),
+				  ee.Feature(null, {foo: 1, ID: 'b'}),
+				  ee.Feature(null, {foo: 1, ID: 'c'}),
+				  ee.Feature(null, {foo: 2, ID: 'd'}),
+				]);
+
+				// Create the secondary collection.
+				var secondaryFeatures = ee.FeatureCollection([
+				  ee.Feature(null, {bar: 1, ID: 'a'}),
+				  ee.Feature(null, {bar: 1, ID: 'b'}),
+				  ee.Feature(null, {bar: 2, ID: 'c'}),
+				  ee.Feature(null, {bar: 3, ID: 'd'}),
+				]);
+
+				// Use an equals filter to specify how the collections match.
+				var toyFilter = ee.Filter.equals({
+				  leftField: 'iso',
+				  rightField: 'iso'
+				});
+
+				// Define the join.
+				var innerJoin = ee.Join.inner();
+
+				// Apply the join.
+				var toyJoin = innerJoin.apply(ort, population, toyFilter);
+
+				// Print the result.
+				print('Inner join toy example:', toyJoin);
+
+				print(toyJoin.map(function(pair) {
+				  var f1 = ee.Feature(pair.get('primary'));
+				  var f2 = ee.Feature(pair.get('secondary'));
+				  return f1.set(f2.toDictionary());
+				}));
+
+				// JOIN AREA END -------------------------------------------------------
 
 
 				// Load Map
