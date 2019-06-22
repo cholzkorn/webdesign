@@ -47,32 +47,6 @@
     <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
     <script>
 
-
-				// Load in population data
-
-				/*
-				var population = $.ajax({
-            url: "einwohner/downloaded.geojson",
-            dataType: "json",
-            success: console.log("Population data successfully loaded."),
-            error: function(xhr) {
-                alert(xhr.statusText)
-            }
-        });*/
-
-
-				var population = null;
-				$.ajax({
-				    'async': false,
-				    'global': false,
-				    'url': "einwohner/downloaded.geojson",
-				    'dataType': "json",
-				    'success': function (data) {
-				        population = data;
-								console.log("Population data successfully loaded");
-				    }
-				});
-
 				// Convert population to FeatureCollection
 
 				// Load in GeoJSON
@@ -80,7 +54,7 @@
 				$.ajax({
 				    'async': false,
 				    'global': false,
-				    'url': "verwaltungsgrenzen/gemeinden_simple.json",
+				    'url': "verwaltungsgrenzen/combined.geojson",
 				    'dataType': "json",
 				    'success': function (data) {
 				        ort = data;
@@ -95,59 +69,8 @@
 				}*/
 
 				// Join population and geoJson
-				console.log("These are the whole objects:");
-				console.log(population);
 				console.log(ort);
-
-				console.log("These are the specific requests:");
-				console.log(population.features[0].properties.iso);
-				console.log(ort.features[0].properties);
-				console.log([...Array(9999).keys()]);
-
-
-
-				// JOINING TWO FEATURE COLLECTIONS -------------------------------------
-
-				// URL: https://stackoverflow.com/questions/48562815/joining-two-feature-collections-by-id-in-earth-engine-javascript-api
-
-				// Create the primary collection.
-				var primaryFeatures = ee.FeatureCollection([
-				  ee.Feature(null, {foo: 0, ID: 'a'}),
-				  ee.Feature(null, {foo: 1, ID: 'b'}),
-				  ee.Feature(null, {foo: 1, ID: 'c'}),
-				  ee.Feature(null, {foo: 2, ID: 'd'}),
-				]);
-
-				// Create the secondary collection.
-				var secondaryFeatures = ee.FeatureCollection([
-				  ee.Feature(null, {bar: 1, ID: 'a'}),
-				  ee.Feature(null, {bar: 1, ID: 'b'}),
-				  ee.Feature(null, {bar: 2, ID: 'c'}),
-				  ee.Feature(null, {bar: 3, ID: 'd'}),
-				]);
-
-				// Use an equals filter to specify how the collections match.
-				var toyFilter = ee.Filter.equals({
-				  leftField: 'iso',
-				  rightField: 'iso'
-				});
-
-				// Define the join.
-				var innerJoin = ee.Join.inner();
-
-				// Apply the join.
-				var toyJoin = innerJoin.apply(ort, population, toyFilter);
-
-				// Print the result.
-				print('Inner join toy example:', toyJoin);
-
-				print(toyJoin.map(function(pair) {
-				  var f1 = ee.Feature(pair.get('primary'));
-				  var f2 = ee.Feature(pair.get('secondary'));
-				  return f1.set(f2.toDictionary());
-				}));
-
-				// JOIN AREA END -------------------------------------------------------
+				console.log(ort.features);
 
 
 				// Load Map
@@ -187,10 +110,9 @@
 					};
 
 					info.update = function (props) {
-					  this._div.innerHTML = '<h4>Gemeindenamen</h4>' +  (props ?
+					  this._div.innerHTML = '<h4>EinwohnerInnen nach Gemeinde</h4>' +  (props ?
 					    '<b>' + props.name + '</b><br />' +
-							 props.einwohner +
-							'Hier k&ouml;nnten weitere Infos stehen.'
+							 props.einwohnerdaten_einwohner.toLocaleString('de', {useGrouping:true})
 					    : 'W&auml;hlen Sie eine Gemeinde');
 					};
 
@@ -200,7 +122,7 @@
 
 					// get color depending on population density value
 
-					/*
+
 					function getColor(d) {
 					  return d > 1000 ? '#800026' :
 					      d > 500  ? '#BD0026' :
@@ -210,7 +132,7 @@
 					      d > 20   ? '#FEB24C' :
 					      d > 10   ? '#FED976' :
 					            '#FFEDA0';
-					}*/
+					}
 
 				// placeholder: static color
 
@@ -225,7 +147,7 @@
 					    color: 'white',
 					    dashArray: '3',
 					    fillOpacity: 0.7,
-					    fillColor: getColor(feature.properties.density)
+					    fillColor: getColor(feature.properties.einwohnerdaten_einwohner)
 					  };
 					}
 
