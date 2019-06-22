@@ -54,24 +54,13 @@
 				$.ajax({
 				    'async': false,
 				    'global': false,
-				    'url': "verwaltungsgrenzen/combined.geojson",
+				    'url': "verwaltungsgrenzen/dataset.geojson",
 				    'dataType': "json",
 				    'success': function (data) {
 				        ort = data;
 								console.log("Municipality data successfully loaded");
 				    }
 				});
-
-				// new einwohner property in ort
-				/*
-				for(i in ort.features){
-					ort.features[i].properties.einwohner = 0;
-				}*/
-
-				// Join population and geoJson
-				console.log(ort);
-				console.log(ort.features);
-
 
 				// Load Map
 				$.when(ort).done(function() {
@@ -112,7 +101,8 @@
 					info.update = function (props) {
 					  this._div.innerHTML = '<h4>EinwohnerInnen nach Gemeinde</h4>' +  (props ?
 					    '<b>' + props.name + '</b><br />' +
-							 props.einwohnerdaten_einwohner.toLocaleString('de', {useGrouping:true})
+							 props.downloaded_einwohner.toLocaleString('de', {useGrouping:true}) +
+							 ' EinwohnerInnen'
 							 //props.einwohnerdaten_einwohner
 					    : 'W&auml;hlen Sie eine Gemeinde');
 					};
@@ -128,8 +118,8 @@
 					  return d > 200000 ? '#800026' :
 					      d > 100000  ? '#BD0026' :
 					      d > 25000  ? '#E31A1C' :
-					      d > 1000  ? '#FC4E2A' :
-					      d > 500   ? '#FD8D3C' :
+					      d > 10000  ? '#FC4E2A' :
+					      d > 1000   ? '#FD8D3C' :
 					      d > 200   ? '#FEB24C' :
 					      d > 10   ? '#FED976' :
 					            'grey';
@@ -143,12 +133,12 @@
 
 					function style(feature) {
 					  return {
-					    weight: 2,
+					    weight: 1,
 					    opacity: 1,
 					    color: 'white',
-					    dashArray: '3',
+					    dashArray: '1',
 					    fillOpacity: 0.7,
-					    fillColor: getColor(feature.properties.einwohnerdaten_einwohner)
+					    fillColor: getColor(feature.properties.downloaded_einwohner)
 					  };
 					}
 
